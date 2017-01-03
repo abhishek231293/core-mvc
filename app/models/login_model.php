@@ -14,7 +14,6 @@ class Login_Model extends Model
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
-
         $result = array();
         while($row = $stmt->fetch()){
             $result[] = $row;
@@ -26,9 +25,9 @@ class Login_Model extends Model
             unset($result[0]['password']);
             // login
             Session::init();
-            Session::set('role', $data['role']);
+            Session::set('role', $result[0]['auth']);
             Session::set('loggedIn', true);
-            Session::set('userid', $data['userid']);
+            Session::set('userid', $result[0]['id']);
             Session::set('userDetail',$result);
             header('location: ../dashboard');
         } else {

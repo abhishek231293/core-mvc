@@ -2,6 +2,8 @@
 
 class View {
 
+    public $dataSet;
+
     function __construct() {
         //echo 'this is the view';
     }

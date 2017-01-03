@@ -20,6 +20,10 @@
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/sunny/jquery-ui.css" />
     <link rel="stylesheet" href="<?php echo _ROOTPATH;?>public/css/carousel.css">
+
+    <!-- Sweet Alert Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/4.0.4/sweetalert2.min.css">
+
     <!-- Fontawesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 

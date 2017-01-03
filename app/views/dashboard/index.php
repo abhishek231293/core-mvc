@@ -47,6 +47,9 @@
             </div>
 
             <h2 class="sub-header">Users</h2>
+
+            <button style="margin-top: -5%;" type="button" class="pull-right btn btn-info btn-circle" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -60,6 +63,7 @@
                         <th>Action</th>
                     </tr>
                     </thead>
+
                     <tbody>
                     <tr>
                         <td>1,001</td>
