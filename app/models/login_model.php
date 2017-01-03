@@ -23,11 +23,13 @@ class Login_Model extends Model
         $count = count($result);
 
         if ($count > 0) {
+            unset($result[0]['password']);
             // login
             Session::init();
             Session::set('role', $data['role']);
             Session::set('loggedIn', true);
             Session::set('userid', $data['userid']);
+            Session::set('userDetail',$result);
             header('location: ../dashboard');
         } else {
             header('location: ../login');

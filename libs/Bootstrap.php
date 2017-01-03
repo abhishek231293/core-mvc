@@ -26,7 +26,6 @@ class Bootstrap {
             $this->_loadDefaultController();
             return false;
         }
-
         $this->_loadExistingController();
         $this->_callControllerMethod();
     }
