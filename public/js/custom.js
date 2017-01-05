@@ -51,3 +51,22 @@ function addNewUser($parentDiv){
     });
 
 }
+function uploadImage(e,$id){
+    e.preventDefault();
+    var requestData = {};
+    var filterData = FilterData($id);
+    // $("#message").empty();
+    // $('#loading').show();
+
+    requestData = {
+        'requestFor' : 'upload-image',
+        'data' : filterData
+    };
+
+
+    $.post('request', requestData, function(result){
+        alert('ytgvb');
+
+    });
+
+}

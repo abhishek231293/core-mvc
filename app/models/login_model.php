@@ -35,5 +35,9 @@ class Login_Model extends Model
         }
         
     }
+
+    public function daata(){
+        return 'ibguinmj';
+    }
     
 }

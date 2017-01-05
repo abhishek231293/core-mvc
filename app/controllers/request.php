@@ -31,6 +31,7 @@ class Request extends Controller {
     {
         switch ($requestFor) {
             case 'add-new-user' : return "addNewUser";
+            case 'upload-image' : return "uploadImage";
 
             default:return 'invalidCall';
         }
@@ -38,6 +39,17 @@ class Request extends Controller {
 
     function addNewUser(){
 
+        $filterData = $_REQUEST['filter-data'];
+
+        $returnData = $this->model->addNewUser($filterData);
+
+        echo $returnData;
+
+
+    }
+    function uploadImage(){
+        echo 'ouinm';
+        print_r($_FILES);exit;
         $filterData = $_REQUEST['filter-data'];
 
         $returnData = $this->model->addNewUser($filterData);

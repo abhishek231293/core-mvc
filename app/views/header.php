@@ -26,7 +26,7 @@
 
     <!-- Fontawesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?php echo _ROOTPATH;?>public/js/custom.js"></script>
@@ -77,5 +77,16 @@
         </div>
     </div>
 </nav>
+
+<?php if (Session::get('loggedIn') == true):?>
+<div class="container-fluid">
+    <div class="row">
+
+        <?php $this->controller->sideBarList();?>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <h3 class="page-header"><?php echo $_SESSION['userDetail'][0]['name']; ?></h3>
+<?php endif; ?>
 
 
