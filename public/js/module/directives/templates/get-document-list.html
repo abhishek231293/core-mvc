@@ -1,0 +1,47 @@
+
+<div class="row">
+    <div ng-if="!loader">
+        <pagination></pagination>
+    </div>
+    <div ng-if="!loader" class="col-lg-12">
+        <div  class="panel-group" id="accordion">
+
+            <div ng-if="documentData.length != 0" class="panel panel-default">
+                <div class="table-responsive ng-scope">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="col-sm-2">Department</th>
+                            <th class="col-sm-2">Category</th>
+                            <th class="col-sm-2">Title</th>
+                            <th class="col-sm-2">Uploading Date</th>
+                            <th style="text-align: center" class="col-sm-2">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody ng-repeat="categoryDetails in documentData">
+                        <tr>
+                            <td>{{categoryDetails['category_name']}}</td>
+                            <td>{{categoryDetails['sub_category_name']}}</td>
+                            <td style="text-transform: capitalize">{{categoryDetails['title']}}</td>
+                            <td>{{categoryDetails['uploading_date'] | getDateFormat}}</td>
+                            <td style="text-align: center;">
+                                <a target="_blank" href="{{URL+categoryDetails['pdf_name']}}">
+                                    <button class="btn btn-xs btn-success">
+                                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> &nbsp; PDF
+                                    </button>
+                                </a>
+                                <button ng-click="deleteDocument(categoryDetails['pdf_id'])" class="btn btn-xs btn-danger"> <i class="fa fa-times" aria-hidden="true"></i> &nbsp;Delete </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="height: 300px;" ng-if="documentData.length == 0" align="center">
+                <label style="padding: 10px; margin-top: 10%;" class="label-danger">No Document Found</label>
+            </div>
+        </div>
+
+    </div>
+</div>

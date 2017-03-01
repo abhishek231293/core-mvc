@@ -1,0 +1,125 @@
+<div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Event Details</h5>
+                <div class="ibox-tools">
+                        <a ui-sref="event.add">
+                            <button style="margin-top:-7%;" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Event</button>
+                        </a>
+
+                </div>
+            </div>
+		  <div class="ibox-content">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <input type="text" ng-model="searchFields.event_title" id="event_title" name="event_title" value="" placeholder="Event Title" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <input style="background-color: transparent; " readonly type="text" placeholder="Start Date"  class="form-control" ng-model="searchFields.event_time" my-datepicker/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <input style="background-color: transparent; " readonly type="text" placeholder="End Date"  class="form-control" ng-model="searchFields.event_end_time" my-datepicker/>
+                        </div>
+                    </div>
+                   
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+                            <select ng-model="searchFields.event_status" name="event_status" id="event_status" class="form-control">
+                            	<option value="" selected="">All</option>
+                                <option value="complete">Completed</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                    </div>
+                     <div class="col-sm-12">
+                         <div class="pull-left">
+                             <button style="margin-top: -3%; margin-left: 10px;" type="button" class="btn btn-danger pull-right">Completed <span class="badge"> {{complete}}</span></button>
+                             <button style="margin-top: -3%; color: #fff; background-color:#286090; " type="button" class="btn  pull-right ">Pending <span class="badge"> {{pending}}</span></button>
+                         </div>
+                     	<div class="pull-right form-group">
+                     		<button ng-click="getEvent()" class="btn btn-success"><i class="fa fa-search"></i> &nbsp;Go</button>
+                            <button ng-click="resetFilter()" class="btn btn-danger"><i class="fa fa-refresh"></i> &nbsp;Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <loader></loader>
+              <pagination-event></pagination-event>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="panel-group">
+
+                          <div ng-if="eventRowset.length" class="panel panel-default">
+                        <div  ng-if="!loader"  class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="col-sm-2">Title</th>
+                                        <th class="col-sm-2">Description</th>
+                                        <th class="col-sm-2">Place</th>
+                                        <th class="col-sm-2">Date & Time</th>
+                                        <th class="col-sm-2">Event Status</th>
+                                        <th style="text-align: center" class="col-sm-2">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="eventRow in eventRowset">
+                                        <td style="text-transform: capitalize">{{eventRow.title}}</td>
+                                        <td>{{eventRow.description | limitTo: 50}} ...
+                                            <br/>
+                                            <a data-toggle="modal" data-target="#eventReadMoreDetail" ng-click="openModal(eventRow)">
+                                                {{eventRow.length < 50 ? '' : 'Read more'}}
+                                            </a>
+                                        </td>
+                                        <td style="text-transform: capitalize">{{eventRow.event_venue}}</td>
+                                        <td>{{eventRow.event_date | date:'dd MMM yyyy'}} {{ eventRow.event_time | getTimeSection}}</td>
+                                        <td>
+
+                                            <span ng-show="eventRow.status == 'pending'" class="badge badge-success col-sm-6">
+                                                Pending
+                                            </span>
+                                            <span ng-show="eventRow.status == 'complete'" class="badge badge-danger col-sm-6">
+                                                Completed
+                                            </span>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <span ng-if="eventRow.status == 'pending'">
+                                                <a ui-sref="event.edit({event_id : eventRow.event_id})">
+                                                    <button  class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                                                </a>
+                                                <button ng-model="deleteEventId" ng-click="deleteEvent(eventRow.event_id)" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Delete</button>
+                                            </span>
+                                            <span ng-if="eventRow.status == 'complete'">
+                                                <button disabled  class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</button>
+                                                <button disabled ng-model="deleteEventId" ng-click="deleteEvent(eventRow.event_id)" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> Delete</button>
+                                            </span>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                      </div>
+                          <div style="height: 300px;" ng-if="!eventRowset.length" align="center">
+                              <label style="padding: 10px; margin-top: 10%; " class="label-danger">No Event Found</label>
+                          </div>
+                      </div>
+                      </div>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

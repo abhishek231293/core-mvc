@@ -32,6 +32,14 @@
     <script type="text/javascript" src="<?php echo _ROOTPATH;?>public/js/custom.js"></script>
 
     <script type="text/javascript" src="<?php echo _ROOTPATH;?>public/js/ie-emulation-modes-warning.js"></script>
+    
+    <script src="<?php echo _ROOTPATH;?>public/js/angular/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="<?php echo _ROOTPATH;?>public/js/module/app.js" type='text/javascript'></script>
+    <script src="<?php echo _ROOTPATH;?>public/js/module/config.js" type='text/javascript'></script>
+    <script src="<?php echo _ROOTPATH;?>public/js/angular/underscore-min.js"></script>
+
+   
     <?php 
     if (isset($this->js)) 
     {

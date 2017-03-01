@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div ng-repeat="i in range">
+
+            <div class="col-md-12">
+
+                <a class='btn btn-sm btn-success col-sm-12 '
+                   onclick="getfile(this)" name="pdf_button{{i}}" item = "{{i}}"
+                   id="pdf__button{{i}}" style="padding: 5%; background: transparent; color: darkgray; border:1px dashed gainsboro;">
+                    <div class="col-md-12" id="pdf__name_{{i}}">
+                        <i class="fa fa-4x fa-upload" aria-hidden="true"></i><br/>
+                        Choose a pdf file to upload here.<br/>
+                    </div>
+                </a>
+
+                <input type="file" name="pdf_{{i}}" item = "{{i}}" id="pdf_{{i}}" ng-repeat="i in range"
+                       style="padding-top: 3px;visibility: hidden;height: .1px;"
+                       onchange="angular.element(this).scope().validateImageFile(this)">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var getfile = function(element){
+
+        var item = $(element).attr("item");
+        $('#pdf_'+item).trigger('click');
+
+    }
+</script>
